@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <style type="text/css">
+ .slidein {
+   animation-duration: 3s;
+   animation-name: slidein;
+   animation-iteration-count: 3;
+   animation-direction: alternate;
+ }
+
+ @keyframes slidein {
+   from {
+     margin-left:100%;
+     width:300%
+   }
+
+   to {
+    margin-left:0%;
+    width:100%;
+  }
+ }
+  </style>
+  <title>AnimacionCSS</title>
+</head>
+<body>
+
+<h1 id="animacion">Animación de CSS</h1>
+<p>
+
+Este ejemplo muestra cómo usar animaciones CSS para hacer que los elementos <code>H1</code> se muevan por la página.</p>
+<p>
+  Además, enviamos texto cada vez que se activa un evento de animación, para que puedas verlos en acción.
+</p>
+<ul id="output">
+</ul>
+<script>
+               var e = document.getElementById("animacion");
+e.addEventListener("animationstart", listener, false);
+e.addEventListener("animationend", listener, false);
+e.addEventListener("animationiteration", listener, false);
+
+e.className = "slidein"; function listener(e) {
+ var l = document.createElement("li");
+ switch(e.type) {
+   case "animationstart":
+     l.innerHTML = "Iniciado: tiempo transcurrido " + e.elapsedTime;
+     break;
+   case "animationend":
+     l.innerHTML = "Finalizado: tiempo transcurrido " + e.elapsedTime;
+     break;
+   case "animationiteration":
+     l.innerHTML = "Nueva iteración comenzó a los " + e.elapsedTime;
+     break;
+ }
+ document.getElementById("output").appendChild(l);
+}
+
+           </script>
+</body>
+</html>
